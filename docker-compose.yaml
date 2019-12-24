@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongo/init/:/docker-entrypoint-initdb.d
+    environment:
+      MONGO_INITDB_DATABASE: db
+    networks:
+      - auto
+
+  customers-api:
+    build: ./ALTEN-CUS
+    restart: always
+    container_name: customer-api
+    depends_on:
+      - "mongo"
+    ports:
+      - 4000:8080
+    environment:
+      NODE_ENV: production
+    networks:
+      - auto
+networks:
+    auto: {}
