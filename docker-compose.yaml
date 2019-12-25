@@ -22,7 +22,7 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "3000:80"
+      - "3000:3000"
     environment:
       NODE_ENV: production
     networks:
@@ -35,7 +35,7 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "4000:80"
+      - "4000:4000"
     environment:
       NODE_ENV: production
     networks:

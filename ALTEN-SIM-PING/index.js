@@ -1,30 +1,31 @@
 var io = require('socket.io-client');
 var config = require('./config.js');
 var http = require('http');
-var socket = io.connect({
-    host: config.socket.hostname,
-    port: config.socket.port
-});
-
-
-getAllVehicles((err, data) => {
-    let vehicles = JSON.parse(data).data.vehicles;
-    let x =
-        console.log('Start Loopimg')
-    vehicles.forEach(vehicle => {
-        setInterval(() => {
-            //Emit message
-            console.log(vehicle)
-            socket.emit(config.socket.socket_name, {
-                vehicleId: vehicle.id,
-                status: 'connected'
-            });
-
-        }, getRandomInt(1, 3) * 60 * 1000);
+module.exports = function(){
+    var socket = io.connect({
+        host: config.socket.hostname,
+        port: config.socket.port
     });
-
-    if (err) console.error(err);
-});
+    getAllVehicles((err, data) => {
+        let vehicles = JSON.parse(data).data.vehicles;
+        let x =
+            console.log('Start Loopimg')
+        vehicles.forEach(vehicle => {
+            setInterval(() => {
+                //Emit message
+                console.log(vehicle)
+                socket.emit(config.socket.socket_name, {
+                    vehicleId: vehicle.id,
+                    status: 'connected'
+                });
+    
+            }, getRandomInt(1, 3) * 60 * 1000);
+        });
+    
+        if (err) console.error(err);
+    });
+    
+}
 
 
 
