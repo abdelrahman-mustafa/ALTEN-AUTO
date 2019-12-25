@@ -42,7 +42,7 @@ services:
       - auto
 
   ping:
-    build: ./ALTEN-PING
+    build: ./ALTEN-SIM-PING
     restart: always
     container_name: ping
     depends_on:
@@ -56,7 +56,7 @@ services:
       - auto
   
   hub:
-    build: ./ALTEN-HUB
+    build: ./ALTEN-PING-HUB
     restart: always
     container_name: hub
     depends_on:
@@ -67,8 +67,9 @@ services:
       NODE_ENV: production
     networks:
       - auto
+  
   web_app:
-    build: ./ALTEN-MONITOR
+    build: ./ALTEN-WEB
     restart: always
     container_name: web_app
     depends_on:
