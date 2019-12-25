@@ -1,0 +1,12 @@
+{
+    "socket": {
+        "port": 3000,
+        "hostanee": "ping",
+        "socket_name": "vehicle_update"
+    },
+    "VehicleService":{
+        "hostname": "vehicle-api",
+        "path": "/api",
+        "port": 5000 
+    }
+}

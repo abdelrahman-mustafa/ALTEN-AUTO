@@ -1,0 +1,21 @@
+/* Structure */
+table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  body {
+  }
+  .homeText {
+    font-size: 35px;
+    color: red;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    text-shadow: 2px 2px 2px gray;
+  }
+  
