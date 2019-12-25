@@ -22,10 +22,65 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "5000:80"
+      - "3000:80"
     environment:
       NODE_ENV: production
     networks:
       - auto
+
+  vehicle-api:
+    build: ./ALTEN-VEHICLE
+    restart: always
+    container_name: vehicle-api
+    depends_on:
+      - "mongo"
+    ports:
+      - "4000:80"
+    environment:
+      NODE_ENV: production
+    networks:
+      - auto
+
+  ping:
+    build: ./ALTEN-PING
+    restart: always
+    container_name: ping
+    depends_on:
+      - "hub"
+    ports:
+      - "8080:3000"
+      - "8090:8090"
+    environment:
+      NODE_ENV: production
+    networks:
+      - auto
+  
+  hub:
+    build: ./ALTEN-HUB
+    restart: always
+    container_name: hub
+    depends_on:
+      - "vehicle-api"
+    ports:
+      - "8080:8080"
+    environment:
+      NODE_ENV: production
+    networks:
+      - auto
+  web_app:
+    build: ./ALTEN-MONITOR
+    restart: always
+    container_name: web_app
+    depends_on:
+      - "vehicle-api"
+    ports:
+      - "4200:4200"
+    environment:
+      NODE_ENV: production
+    networks:
+      - auto
+
+
+
 networks:
     auto: {}
