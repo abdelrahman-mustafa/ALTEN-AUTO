@@ -72,20 +72,19 @@ services:
     networks:
       - auto
   
-  # web_app:
-  #   build: ./ALTEN-WEB
-  #   restart: always
-  #   container_name: web_app
-  #   depends_on:
-  #     - "vehicle-api"
-  #   ports:
-  #     - "4200:4200"
-  #   environment:
-  #     NODE_ENV: production
-  #   networks:
-  #     - auto
-
-
+  web_app:
+    build: ./ALTEN-WEB
+    restart: always
+    container_name: web_app
+    depends_on:
+      - "vehicle-api"
+    ports:
+      - "80:80"
+    environment:
+      NODE_ENV: production
+    networks:
+      - front
 
 networks:
-    auto: {}
+  auto: {}
+  front: {}
