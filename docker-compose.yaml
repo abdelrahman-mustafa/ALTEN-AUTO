@@ -8,8 +8,6 @@ services:
     container_name: mongo
     ports:
       - 27017:27017
-    volumes:
-      - ./mongo/init/:/docker-entrypoint-initdb.d
     environment:
       MONGO_INITDB_DATABASE: db
     networks:
@@ -47,11 +45,17 @@ services:
     container_name: ping
     depends_on:
       - "hub"
-    ports:
-      - "8080:3000"
-      - "8090:8090"
     environment:
       NODE_ENV: production
+    networks:
+      - auto
+  
+  init:
+    build: ./ALTEN-INIT-DB
+    container_name: init
+    restart: always
+    depends_on:
+      - "mongo"
     networks:
       - auto
   
@@ -62,24 +66,24 @@ services:
     depends_on:
       - "vehicle-api"
     ports:
-      - "8080:8080"
+      - "8000:8000"
     environment:
       NODE_ENV: production
     networks:
       - auto
   
-  web_app:
-    build: ./ALTEN-WEB
-    restart: always
-    container_name: web_app
-    depends_on:
-      - "vehicle-api"
-    ports:
-      - "4200:4200"
-    environment:
-      NODE_ENV: production
-    networks:
-      - auto
+  # web_app:
+  #   build: ./ALTEN-WEB
+  #   restart: always
+  #   container_name: web_app
+  #   depends_on:
+  #     - "vehicle-api"
+  #   ports:
+  #     - "4200:4200"
+  #   environment:
+  #     NODE_ENV: production
+  #   networks:
+  #     - auto
 
 
 

@@ -11,33 +11,22 @@ export class CoreService {
   constructor(private http: HttpClient) {
 
   }
-  public getVehicles(): Observable<Vehicle[]> {
-    let query = `query{
-      vehicles{
-        id
-        connected
-        number
-            customer{
-              id
-              name
-            }
-      }
-    }`;
+  public getAllVehicles(): Observable<Vehicle[]> {
+    return this.http.get<Vehicle[]>('http://localhost:4000/vehicles');
 
-    return this.http.post<Vehicle[]>('http://localhost:5000/api', { "query": query });
   }
   public getCustomers(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>('http://vehicle-api:4000/vehicles');
+    return this.http.get<Vehicle[]>(`http://localhost:3000/customers`);
   }
 
   public GetVehiclesForCustomer(customer):Observable<Vehicle[]> {
 
-    return this.http.get<Vehicle[]>(`http://customer-api:3000/customers/${customer}`);
+    return this.http.get<Vehicle[]>(`http://localhost:4000/vehicles/customer/${customer}`);
 
   }
   
 
   public GetVehiclesByStatus(status): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`http://vehicle-api:4000/vehicles/connected/${status}`);
+    return this.http.get<Vehicle[]>(`http://localhost:4000/vehicles/connected/${status}`);
   }
 }

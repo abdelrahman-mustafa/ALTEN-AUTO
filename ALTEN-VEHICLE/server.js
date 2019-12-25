@@ -4,9 +4,8 @@ var mongoDB = require('./model/index');
 var config = require('./config')
 mongoDB.connect()
 var server = http.createServer(app);
-
 server.listen(config.PORT, function() {
-    console.log(`SERVER LISTEN ON PORT [${PORT}]`);
+    console.log(`SERVER LISTEN ON PORT [${config.PORT}]`);
 });
 
 process.on("uncaughtException", function(ex) {

@@ -1,15 +1,16 @@
 {
-  "name": "pinging_sim",
+  "name": "alten-inint-db",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "init.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index"
+    "start": "node init"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "socket.io": "^2.3.0"
+    "mongoose": "^5.8.3",
+    "uuid": "^3.3.3"
   }
 }

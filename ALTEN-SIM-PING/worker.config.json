@@ -1,12 +1,12 @@
 {
     "socket": {
-        "port": 3000,
-        "hostanee": "localhost",
+        "port": 5000,
+        "hostname": "hub",
         "socket_name": "vehicle_update"
     },
     "VehicleService":{
-        "hostname": "localhost",
-        "path": "/api",
-        "port": 5000 
+        "hostname": "vehicle-api",
+        "path": "/vehicles",
+        "port": 4000 
     }
 }

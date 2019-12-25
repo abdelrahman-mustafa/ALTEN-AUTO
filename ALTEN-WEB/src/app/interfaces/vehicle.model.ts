@@ -1,6 +1,7 @@
 export interface Vehicle {
-  vehicleId: number;
-  regNum: number;
+  vehicleId: string;
+  regNum: string;
   customer: string;
+  lastSeen: string;
   isConnected: Boolean;
 }

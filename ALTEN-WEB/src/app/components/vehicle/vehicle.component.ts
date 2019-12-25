@@ -7,16 +7,6 @@ import { CoreService } from 'src/app/services/core.service';
 
 function getData() {
   const ELEMENT_DATA: Vehicle[] = [
-    { vehicleId: 1, customer: 'Hydrogen', regNum: 1.0079, isConnected: true },
-    { vehicleId: 2, customer: 'Helium', regNum: 4.0026, isConnected: true },
-    { vehicleId: 3, customer: 'Lithium', regNum: 6.941, isConnected: true },
-    { vehicleId: 4, customer: 'Beryllium', regNum: 9.0122, isConnected: true },
-    { vehicleId: 5, customer: 'Boron', regNum: 10.811, isConnected: true },
-    { vehicleId: 6, customer: 'Carbon', regNum: 12.0107, isConnected: true },
-    { vehicleId: 7, customer: 'Nitrogen', regNum: 14.0067, isConnected: true },
-    { vehicleId: 8, customer: 'Oxygen', regNum: 15.9994, isConnected: true },
-    { vehicleId: 9, customer: 'Fluorine', regNum: 18.9984, isConnected: true },
-    { vehicleId: 10, customer: 'Neon', regNum: 20.1797, isConnected: true },
   ];
   return ELEMENT_DATA;
 }
@@ -40,16 +30,23 @@ export class VehicleComponent implements OnInit {
 
   }
   public getAllVehicles() {
-    this.service.getVehicles()
+    this.service.getAllVehicles()
       .subscribe((res: any) => {
         console.log('##### After Get  The init')
         console.log(res);
-        this.vehicles = res.data.vehicles.map(item => {
+        this.vehicles = res.map(item => {
+          var now = new Date().getTime();
+          var lastSeen = new Date(item.lastSeen).getTime();
+          console.log(now)
+          console.log(lastSeen)
+          var diffMs = (now - lastSeen);
+          var minutes = (diffMs / 1000) / 60;    
           let vehicleItem: Vehicle = {
-            vehicleId: item.id,
+            vehicleId: item.vehicleId,
             customer: item.customer.name,
+            lastSeen: item.lastSeen,
             regNum: item.number,
-            isConnected: item.connected
+            isConnected: (minutes<2)? true: false
           };
           return vehicleItem;
         }); // this line to make any kind of deserialziation you need from API;
@@ -79,11 +76,11 @@ export class VehicleComponent implements OnInit {
   public getAllCustomers() {
     this.service.getCustomers()
       .subscribe((res: any) => {
-        console.log('##### After Get  The init')
+        console.log('##### After Get  Customers ')
         console.log(res);
-        this.customers = res.data.customers.map(item => {
+        this.customers = res.map(item => {
           let customerItem: Customer = {
-            id: item.id,
+            id: item._id,
             name:item.name
           };
           return customerItem;
@@ -99,39 +96,55 @@ export class VehicleComponent implements OnInit {
 
     if (this.filterCustomerID != -1) {
       this.service.GetVehiclesForCustomer(this.filterCustomerID).subscribe((res: any) => {
-        console.log('##### After Get  The init')
+        console.log('##### After Get  The Search')
         console.log(res);
-        this.vehicles = res.data.customer.vehicles.map(item => {
+
+        this.vehicles = res.map(item => {
+          var now = new Date().getTime();
+          console.log(lastSeen)
+
+          var lastSeen = new Date(item.lastSeen).getTime();
+          console.log(now)
+          console.log(lastSeen)
+          var diffMs = (now - lastSeen);
+          var minutes = (diffMs / 1000) / 60;    
           let vehicleItem: Vehicle = {
-            vehicleId: item.id,
-            customer: res.data.customer.name,
+            vehicleId: item.vehicleId,
+            customer: item.customer.name,
+            lastSeen: item.lastSeen,
             regNum: item.number,
-            isConnected: item.connected
+            isConnected: (minutes<2)? true: false
           };
           return vehicleItem;
         }); // this line to make any kind of deserialziation you need from API;
         this.dataSource = new MatTableDataSource(this.vehicles);
-        console.log(this.vehicles);
       }, (error) => {
         console.log(error);
         alert(error);
       });
     } else if (this.filterIsConnected != -1) {
-      this.service.GetVehiclesByStatus(Boolean(this.filterIsConnected))
-        .subscribe((res: any) => {
+      this.service.GetVehiclesByStatus(Boolean(this.filterIsConnected)).subscribe((res: any) => {
           console.log('##### After Get  The init')
           console.log(res);
-          this.vehicles = res.data.vehicles.map(item => {
+          
+
+          this.vehicles = res.map(item => {
+            var now = new Date().getTime();
+            var lastSeen = new Date(item.lastSeen).getTime();
+            console.log(now)
+            console.log(lastSeen)
+            var diffMs = (now - lastSeen);
+            var minutes = (diffMs / 1000) / 60;    
             let vehicleItem: Vehicle = {
-              vehicleId: item.id,
+              vehicleId: item.vehicleId,
               customer: item.customer.name,
+              lastSeen: item.lastSeen,
               regNum: item.number,
-              isConnected: item.connected
+              isConnected: (minutes<2)? true: false
             };
             return vehicleItem;
           }); // this line to make any kind of deserialziation you need from API;
           this.dataSource = new MatTableDataSource(this.vehicles);
-          console.log(this.vehicles);
         }, (error) => {
           console.log(error);
           alert(error);
