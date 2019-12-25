@@ -12,21 +12,21 @@ export class CoreService {
 
   }
   public getAllVehicles(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>('http://localhost:4000/vehicles');
+    return this.http.get<Vehicle[]>('http://vehicle-api:4000/vehicles');
 
   }
   public getCustomers(): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`http://localhost:3000/customers`);
+    return this.http.get<Vehicle[]>(`http://customer-api:3000/customers`);
   }
 
   public GetVehiclesForCustomer(customer):Observable<Vehicle[]> {
 
-    return this.http.get<Vehicle[]>(`http://localhost:4000/vehicles/customer/${customer}`);
+    return this.http.get<Vehicle[]>(`http://vehicle-api:4000/vehicles/customer/${customer}`);
 
   }
   
 
   public GetVehiclesByStatus(status): Observable<Vehicle[]> {
-    return this.http.get<Vehicle[]>(`http://localhost:4000/vehicles/connected/${status}`);
+    return this.http.get<Vehicle[]>(`http://vehicle-api:4000/vehicles/connected/${status}`);
   }
 }
