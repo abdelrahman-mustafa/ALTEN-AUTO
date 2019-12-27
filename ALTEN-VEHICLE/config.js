@@ -1,7 +1,7 @@
 module.exports = {
     PORT:process.env.PORT?process.env.PORT:4000,
     mongodb: {
-        uri: process.env.DB_URI || 'mongodb://mongo:27017/db', // Databse URI and database name
+        uri: (process.env.NODE_ENV == 'test')? 'mongodb://localhost:27017/db': 'mongodb://mongo:27017/db', // Databse URI and database name
         //secret: crypto, // Cryto-created secret
         db: process.env.DB_NAME || 'events', // Database name
         option: {
