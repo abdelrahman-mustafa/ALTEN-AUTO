@@ -16,7 +16,7 @@ function getData() {
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  displayedColumns: string[] = ['VehicleId', 'customer', 'regNum', 'isConnected', 'lastSeen'];
+  displayedColumns: string[] = ['VehicleId', 'customer', 'regNum', 'isConnected', 'Last updated'];
   public vehicles: Vehicle[];
   public customers: Customer[];
 

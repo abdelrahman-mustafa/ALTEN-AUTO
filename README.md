@@ -8,18 +8,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 
-## Architecture
-
-| Service              | Tech             |
-|------------------|----------------------|
-| Web              | Angulre 7            |
-| Customer API     | Node, Express        |
-| Vehicle API      | Node, Express        |
-| Hub API          | Node, Socket         |
-| database         | Mongodb              |
-| ping API         | Node, Socket         |
-
-
 
 ## System Architecure 
 The main structure is inspired by "12 Factory app" microservice framework 
