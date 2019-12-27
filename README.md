@@ -28,7 +28,7 @@ The main structure is inspired by "12 Factory app" microservice framework
 
 The Serverless Architecture 
 
-![Services Architecture](/structure/Alten-Serv.png)
+![Cloud Architecture](/structure/Alten-Serv.png)
 
 ## Running the system
 
@@ -39,7 +39,7 @@ docker-compose up -d
 
 ## Running the tests
 
-The test structure depends on mocha strategy. The built tests are functional test cases. you can find the main test function within "helper" folder. 
+The test structure depends on mocha strategy integrated with Travis CI. The built tests are functional test cases. you can find the main test function within "helper" folder. 
 The start point is at test folder with index.js 
 
 ```
