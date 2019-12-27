@@ -6,5 +6,5 @@ node_js:
   - "lts/*"
 
 env:
- - NODE_ENV=test
+ - NODE_ENV=testing
 cache: npm

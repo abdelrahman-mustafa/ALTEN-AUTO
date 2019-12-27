@@ -120,9 +120,9 @@ function buildSeed() {
             });
         });
         
-        // Customer.create(customer).then((res) => {
-            console.log(res)
-        });
+        // // Customer.create(customer).then((res) => {
+        //     console.log(res)
+        // });
     });
 }
 
