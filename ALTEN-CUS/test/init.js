@@ -110,7 +110,7 @@ mongoose.connect(config.mongodb.uri, config.mongodb.option, (err) => {
 
 
 
-var Vehicle = mongoose.model('vehicles', vehicle)
+// var Vehicle = mongoose.model('vehicles', vehicle)
 
 
 
@@ -130,9 +130,9 @@ function buildSeed() {
             vehicle.vehicleId = vehicle.vehicleID;
             vehicle.customer = customer_id;
             vehicle.lastSeen = new Date()
-            Vehicle.create(vehicle).then((res) => {
-                console.log(res)
-            });
+            // Vehicle.create(vehicle).then((res) => {
+            //     console.log(res)
+            // });
         });
         
         Customer.create(customer).then((res) => {

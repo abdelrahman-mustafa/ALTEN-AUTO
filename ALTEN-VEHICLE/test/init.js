@@ -85,7 +85,7 @@ mongoose.connect(config.mongodb.uri, config.mongodb.option, (err) => {
     } else {
         //console.log(config.secret);
         mongoose.connection.db.dropDatabase( function(err, result) {
-            Customer = mongoose.model('customers', customerSchema)
+           // Customer = mongoose.model('customers', customerSchema)
 
                 buildSeed()
                 console.log('Connected to database : ' + config.mongodb.db);
@@ -120,7 +120,7 @@ function buildSeed() {
             });
         });
         
-        Customer.create(customer).then((res) => {
+        // Customer.create(customer).then((res) => {
             console.log(res)
         });
     });
