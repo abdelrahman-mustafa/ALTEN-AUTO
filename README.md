@@ -7,15 +7,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 
 
+## Architecture
+
+| Service              | Tech             |
+|------------------|----------------------|
+| Web              | Angulre 7            |
+| Customer API     | Node, Express        |
+| Vehicle API      | Node, Express        |
+| Hub API          | Node, Socket         |
+| database         | Mongodb              |
+| ping API         | Node, Socket         |
+
+
+
 ## System Architecure 
 The main structure is inspired by "12 Factory app" microservice framework 
 
-![Image description](https://github.com/abdelrahman-mustafa/ALTEN-AUTO/tree/master/structure/Alten-Veh.png)
+![Services Architecture](/structure/Alten-Veh.png)
 
 
 The Serverless Architecture 
 
-![Image description](https://github.com/abdelrahman-mustafa/ALTEN-AUTO/tree/master/structure/Alten-Serv.png)
+![Services Architecture](/structure/Alten-Serv.png)
 
 ## Running the system
 
