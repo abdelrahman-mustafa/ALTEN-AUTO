@@ -28,7 +28,7 @@ The main structure is inspired by "12 Factory app" microservice framework
 
 The Serverless Architecture 
 
-![Cloud Architecture](/structure/Alten-Serv.png)
+![Cloud Architecture](/structure/ALten-Serv.png)
 
 ## Running the system
 
