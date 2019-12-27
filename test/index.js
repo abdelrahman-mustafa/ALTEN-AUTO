@@ -12,5 +12,5 @@ test_files.forEach((file)=>{
 });
 
 mocha.run((failures)=>{
-    process.exitCode = failures ? 1 : 0;  // exit with non-zero status if there were failures
+    process.exitCode = failures ? 1 : process.exit(0);  // exit with non-zero status if there were failures
 });
