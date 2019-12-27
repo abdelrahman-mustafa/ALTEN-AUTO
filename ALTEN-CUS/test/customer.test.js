@@ -8,11 +8,11 @@ chai.use(require('chai-http'));
 
 var app = require('./../app');
 var data = require('./init');
+console.log('DDDDDDDDDDDDDDDDDDDD', data)
 describe('API endpoint GET /', function() {
 
     it('should return 200', function(done) {
         chai.request(app).get('/ping').end((err, res)=>{
-            console.log(res)
             res.statusCode.should.eql(200);
             res.text.should.eql('ok');
             done();
@@ -30,7 +30,6 @@ describe('API endpoint GET /customers/customerId', function() {
         }, 1000);
     });
     it('should return the main customer', function(done) {
-        var base = 'http://localhost:3000';
         chai.request(app).get(`/customers/${data[0]._id}`).end((err, res) => {
             res.statusCode.should.eql(200);
             res.headers['content-type'].should.contain('application/json');
@@ -48,7 +47,6 @@ describe('API endpoint GET /customers', function() {
         }, 1000);
     });
     it('should return all customers', function(done) {
-        var base = 'http://localhost:3000';
         chai.request(app).get('/customers').end((err, res)=>{
             res.statusCode.should.eql(200);
             res.headers['content-type'].should.contain('application/json');

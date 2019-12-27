@@ -8,7 +8,6 @@ describe('API endpoint GET /', function() {
 
     it('should return 200', function(done) {
         chai.request(app).get('/ping').end((err, res)=>{
-            console.log(res)
             res.statusCode.should.eql(200);
             res.text.should.eql('ok');
             done();
