@@ -27,7 +27,7 @@ The main structure is inspired by "12 Factory app" microservice framework
 ![Services Architecture](/structure/Alten-Veh.png)
 
 
-The Serverless Architecture 
+## The Serverless Architecture 
 
 ![Cloud Architecture](/structure/ALten-Serv.png)
 
@@ -35,7 +35,14 @@ The Serverless Architecture
 
 
 ```
+docker-compose  build 
+
 docker-compose up -d 
+```
+Then you can open the web page by open the browser with 
+
+```
+localhost:80 
 ```
 
 ## Running the tests
