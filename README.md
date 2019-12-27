@@ -1,4 +1,5 @@
 # ALTEN-AUTO
+[![Build Status](https://travis-ci.com/abdelrahman-mustafa/ALTEN-AUTO.svg?branch=master)](https://travis-ci.com/abdelrahman-mustafa/ALTEN-AUTO)
 
 Smart Vehicles monitoring system tracks the connectivity of all vehicles and displys their status through a web app.
 ## Getting Started
