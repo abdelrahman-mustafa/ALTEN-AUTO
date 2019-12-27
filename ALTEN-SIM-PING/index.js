@@ -14,7 +14,7 @@ getAllVehicles((err, data) => {
                 status: 'connected'
             });
 
-        }, getRandomInt(1, 3) * 1000);
+        }, getRandomInt(1, 2) * 60 * 1000);
     });
 
     if (err) console.error(err);

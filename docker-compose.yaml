@@ -83,7 +83,8 @@ services:
     environment:
       NODE_ENV: production
     networks:
-      - auto
+      - front
 
 networks:
   auto: {}
+  front: {}

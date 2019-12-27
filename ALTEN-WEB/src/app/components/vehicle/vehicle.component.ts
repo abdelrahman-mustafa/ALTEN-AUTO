@@ -16,7 +16,7 @@ function getData() {
   styleUrls: ['./vehicle.component.css']
 })
 export class VehicleComponent implements OnInit {
-  displayedColumns: string[] = ['VehicleId', 'customer', 'regNum', 'isConnected'];
+  displayedColumns: string[] = ['VehicleId', 'customer', 'regNum', 'isConnected', 'lastSeen'];
   public vehicles: Vehicle[];
   public customers: Customer[];
 
@@ -34,19 +34,13 @@ export class VehicleComponent implements OnInit {
       .subscribe((res: any) => {
         console.log('##### After Get  The init')
         console.log(res);
-        this.vehicles = res.map(item => {
-          var now = new Date().getTime();
-          var lastSeen = new Date(item.lastSeen).getTime();
-          console.log(now)
-          console.log(lastSeen)
-          var diffMs = (now - lastSeen);
-          var minutes = (diffMs / 1000) / 60;    
+        this.vehicles = res.map(item => { 
           let vehicleItem: Vehicle = {
             vehicleId: item.vehicleId,
             customer: item.customer.name,
             lastSeen: item.lastSeen,
             regNum: item.number,
-            isConnected: (minutes<2)? true: false
+            isConnected: item.connected
           };
           return vehicleItem;
         }); // this line to make any kind of deserialziation you need from API;
@@ -100,20 +94,13 @@ export class VehicleComponent implements OnInit {
         console.log(res);
 
         this.vehicles = res.map(item => {
-          var now = new Date().getTime();
-          console.log(lastSeen)
-
-          var lastSeen = new Date(item.lastSeen).getTime();
-          console.log(now)
-          console.log(lastSeen)
-          var diffMs = (now - lastSeen);
-          var minutes = (diffMs / 1000) / 60;    
+       
           let vehicleItem: Vehicle = {
             vehicleId: item.vehicleId,
             customer: item.customer.name,
             lastSeen: item.lastSeen,
             regNum: item.number,
-            isConnected: (minutes<2)? true: false
+            isConnected: item.connected
           };
           return vehicleItem;
         }); // this line to make any kind of deserialziation you need from API;
@@ -129,18 +116,13 @@ export class VehicleComponent implements OnInit {
           
 
           this.vehicles = res.map(item => {
-            var now = new Date().getTime();
-            var lastSeen = new Date(item.lastSeen).getTime();
-            console.log(now)
-            console.log(lastSeen)
-            var diffMs = (now - lastSeen);
-            var minutes = (diffMs / 1000) / 60;    
+
             let vehicleItem: Vehicle = {
               vehicleId: item.vehicleId,
               customer: item.customer.name,
               lastSeen: item.lastSeen,
               regNum: item.number,
-              isConnected: (minutes<2)? true: false
+              isConnected:item.connected
             };
             return vehicleItem;
           }); // this line to make any kind of deserialziation you need from API;
