@@ -1,6 +1,8 @@
 var uuid = require('uuid');
 var mongoose  = require('mongoose');
-// var Vehicle = require('./model/vehicledb')
+var Vehicle; 
+var Customer; 
+
 var Schema = mongoose.Schema;
 let data = []
 
@@ -47,7 +49,6 @@ var customerSchema = new Schema({
     }
 });
 
-var Customer = mongoose.model('customers', customerSchema)
 
 const vehicle = new mongoose.Schema({
     _id: String,
@@ -69,25 +70,25 @@ var config = require('./config');
       if(err){
           console.log(`Could not connect to database ${config.mongodb.db} :` , err);
         }else{
-          //console.log(config.secret);
-          buildSeed()
-        console.log('Connected to database : '+ config.mongodb.db);
+            mongoose.connection.db.dropDatabase( function(err, result) {
+                Customer = mongoose.model('customers', customerSchema);
+                Vehicle = mongoose.model('vehicles', vehicle)
+
+        
+                    buildSeed()
+                    console.log('Connected to database : ' + config.mongodb.db);
+        
+            });
       }
     });
 
 
 
-var Vehicle = mongoose.model('vehicles', vehicle)
 
 
 
 
 function buildSeed(){
-    Vehicle.deleteMany({})
-
-    Customer.deleteMany({})
-
-    
     data.forEach((customer)=>{
             let customer_id = uuid()
             customer._id = customer_id;
